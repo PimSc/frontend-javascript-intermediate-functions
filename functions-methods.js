@@ -5,10 +5,19 @@
 /* Opdracht  1 */
 // Schrijf een functie genaamd getEmailDomain, die een emailadres verwacht en de domeinnaam teruggeeft. Een domeinnaam is hetgeen dat na het @ in het adres staat
 // ---- Verwachte uitkomsten:
-// getEmailDomain("n.eeken@novi-education.nl") geeft novi-education.nl
+// getEmailDomain() geeft novi-education.nl
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+
+function getEmailDomain(email){
+    const arrayPart = email.split("@");
+    return arrayPart[1];
+}
+
+console.log(getEmailDomain("n.eeken@novi-education.nl"));
+console.log(getEmailDomain("t.mellink@novi.nl"));
+console.log(getEmailDomain("a.wiersma@outlook.com"));
 
 
 
@@ -19,6 +28,66 @@
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
+
+// function typeOfEmail(emailAdress) {
+//
+//     const arrayPart = emailAdress.split("@");
+//
+//     if (arrayPart[1] === "novi-education.nl"){
+//         return "student"
+//     } else if(arrayPart[1] === "novi.nl"){
+//         return "medewerker";
+//     } else if(arrayPart[1] === "outlook.com" || "gmail.com"){
+//         return "Extern";
+//     } else {return "Onbekend emailadres";
+//     }
+// }
+// console.log(typeOfEmail("a.wiersma@gmail.com"));
+
+
+function typeOfEmail2(emailAdress) {
+
+    const arrayPart = emailAdress.split("@")[1];
+    // console.log(arrayPart)
+
+    switch (arrayPart) {
+        case "novi-education.nl":
+            return "student";
+        case "novi.nl":
+            return "medewerker";
+        default:
+            return "extern";
+    }
+}
+
+console.log(typeOfEmail2("a.wiersma@outlook.com"))
+console.log(typeOfEmail2("n.eeken@novi-education.nl"))
+
+
+// typeOfEmail("n.eeken@novi-education.nl") geeft "Student"
+// typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
+// typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
+// typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
+
+
+function typeOfEmail(emailAddress){
+    const arrayPart = emailAddress.split("@");
+    if (arrayPart[1] === "novi-education.nl") {
+        return "Student";
+    } else if (arrayPart[1] === "novi.nl") {
+        return "Medewerker";
+    } else if (arrayPart[1] === "outlook.com") {
+        return "Extern";
+    } else {
+        return "Extern";
+    }
+}
+
+console.log(typeOfEmail("n.eeken@novi-education.nl"));
+console.log(typeOfEmail("t.mellink@novi.nl"));
+console.log(typeOfEmail("novi.nlaapjesk@outlook.com"));
+console.log(typeOfEmail("a.wiersma@outlook.com"));
+
 
 
 
@@ -34,3 +103,46 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+
+
+
+
+// function typeOfEmail(emailAddress){
+//
+//     if (typeOfEmail === "." && "@") {
+//         return true;
+//     } else if (typeOfEmail === ".") {
+//         return false;
+//     } else if (typeOfEmail === "@") {
+//         return false;
+//     } else {
+//         return "Ongeldig emailadress";
+//     }}
+
+
+function checkEmailValidity(email) {
+    const atIndex = email.indexOf("@");
+    const doubleAtIndex = email.indexOf( "@");
+    const commaIndex = email.indexOf(",");
+    const lastChar = email[email.length - 1];
+
+    switch (true) {
+        case atIndex === -1:
+            return false; // Geen "@"-symbool
+        case commaIndex > -1:
+            return false; // Komma aanwezig
+        case doubleAtIndex > -1:
+            return false; // Komma aanwezig
+        case lastChar === ".":
+            return false; // Punt als laatste karakter
+        default:
+            return true; // Voldoet aan alle voorwaarden
+    }
+}
+
+console.log(checkEmailValidity("n.eeken@novi.nl"));
+console.log(checkEmailValidity("tessmellink@novi.nl"));
+console.log(checkEmailValidity("n.eekenanovi.nl"));
+console.log(checkEmailValidity("n.eeken@novinl."));
+console.log(checkEmailValidity("tessmellink@novi,nl"));
