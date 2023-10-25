@@ -10,23 +10,14 @@
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
 
+function getEmailDomain(email){
+    const arrayPart = email.split("@");
+    return arrayPart[1];
+}
 
-// function getEmailDomain(email){
-//     const arrayPart = email.split("@");
-//     return arrayPart[1];
-// }
-//
-// console.log(getEmailDomain("n.eeken@novi-education.nl"));
-// console.log(getEmailDomain("t.mellink@novi.nl"));
-// console.log(getEmailDomain("a.wiersma@outlook.com"));
-
-// ----
-
-
-
-
-
-
+console.log(getEmailDomain("n.eeken@novi-education.nl"));
+console.log(getEmailDomain("t.mellink@novi.nl"));
+console.log(getEmailDomain("a.wiersma@outlook.com"));
 
 
 
@@ -51,27 +42,26 @@
 //     } else {return "Onbekend emailadres";
 //     }
 // }
-
 // console.log(typeOfEmail("a.wiersma@gmail.com"));
 
 
-// function typeOfEmail2(emailAdress) {
-//
-//     const arrayPart = emailAdress.split("@")[1];
-//     // console.log(arrayPart)
-//
-//     switch (arrayPart) {
-//         case "novi-education.nl":
-//             return "student";
-//         case "novi.nl":
-//             return "medewerker";
-//         default:
-//             return "extern";
-//     }
-// }
-//
-// console.log(typeOfEmail2("a.wiersma@outlook.com"))
-// console.log(typeOfEmail2("n.eeken@novi-education.nl"))
+function typeOfEmail2(emailAdress) {
+
+    const arrayPart = emailAdress.split("@")[1];
+    // console.log(arrayPart)
+
+    switch (arrayPart) {
+        case "novi-education.nl":
+            return "student";
+        case "novi.nl":
+            return "medewerker";
+        default:
+            return "extern";
+    }
+}
+
+console.log(typeOfEmail2("a.wiersma@outlook.com"))
+console.log(typeOfEmail2("n.eeken@novi-education.nl"))
 
 
 // typeOfEmail("n.eeken@novi-education.nl") geeft "Student"
