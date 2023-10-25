@@ -118,21 +118,22 @@ console.log(typeOfEmail("a.wiersma@outlook.com"));
 
 
 
-function typeOfEmail(emailAddress){
-
-    if (typeOfEmail === "." && "@") {
-        return true;
-    } else if (typeOfEmail === ".") {
-        return false;
-    } else if (typeOfEmail === "@") {
-        return false;
-    } else {
-        return "Ongeldig emailadress";
-    }}
+// function typeOfEmail(emailAddress){
+//
+//     if (typeOfEmail === "." && "@") {
+//         return true;
+//     } else if (typeOfEmail === ".") {
+//         return false;
+//     } else if (typeOfEmail === "@") {
+//         return false;
+//     } else {
+//         return "Ongeldig emailadress";
+//     }}
 
 
 function checkEmailValidity(email) {
     const atIndex = email.indexOf("@");
+    const doubleAtIndex = email.indexOf( "@");
     const commaIndex = email.indexOf(",");
     const lastChar = email[email.length - 1];
 
@@ -140,6 +141,8 @@ function checkEmailValidity(email) {
         case atIndex === -1:
             return false; // Geen "@"-symbool
         case commaIndex > -1:
+            return false; // Komma aanwezig
+        case doubleAtIndex > -1:
             return false; // Komma aanwezig
         case lastChar === ".":
             return false; // Punt als laatste karakter
